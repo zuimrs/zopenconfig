@@ -1,0 +1,13 @@
+support ubuntu 14.04
+Usage:	./zopenconfig.sh [-h]  <Service_Name> [Action] [-v]
+
+optional arguments:
+	-h,--help	show this help message and exit
+	-v,--version	show the version of these bash scripts
+
+**For example**
+	./zopenconfig.sh package_test
+	./zopenconfig.sh show
+	./zopenconfig.sh user
+	./zopenconfig.sh role
+	./zopenconfig.sh tenant

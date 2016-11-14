@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# You need to edit follow information of TENANT
+
+#TENANT config
+unset TENANT_NAME
+unset TENANT_DESCRIPTION
+unset TENANT_ENABLED
+
+export TENANT_NAME=tenant_test
+export TENANT_DESCRIPTION=tenant_description 
+export TENANT_ENABLED=Default

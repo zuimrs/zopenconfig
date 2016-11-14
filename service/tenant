@@ -1,0 +1,49 @@
+#!/bin/bash
+SERVICE_LIST="TENANT_MANAGEMENT"
+CONFIG_SCRIPT=config.py
+TEMP_PATH="template"
+TEMP_FILE_NAME="tenant.temp"
+TEMP_ENV_FILE="temp-env.sh"
+call_get_config()
+{
+	cp "$TEMP_PATH/$TEMP_FILE_NAME" TEMP_ENV_FILE
+ 	vim TEMP_ENV_FILE
+ 	source TEMP_ENV_FILE
+
+}
+
+ func_tenant_add()
+ {
+ 	call_get_config
+ 	python $CONFIG_SCRIPT "tenant_add"
+ 	rm TEMP_ENV_FILE
+
+ 	#shell api
+ 	#keystone role-add --name $ROLENAME
+ 	keystone tenant-list
+}
+func_tenant_delete()
+{
+	local TENANT_NAME=$3
+	if [ $# -le 2 ];then
+		echo "You need use this command with an argument of the name of role"
+		exit 1
+	fi
+
+	# need to update python api (using client.tenants.delete)
+	#python $CONFIG_SCRIPT "role_delete"  $ROLE_NAME
+
+	#shell api
+	keystone tenant-delete $TENANT_NAME
+	keystone tenant-list
+}
+func_tenant_clean()
+{
+	export CLEAN_CONFRIM
+ 	if  [ -z $CLEAN_CONFRIM ]; then
+		read -p "Do you really want to clean all tenant? [Y/n]" CLEAN_CONFRIM
+	fi
+	if [ 'y' = $CLEAN_CONFRIM -o 'Y' = $CLEAN_CONFRIM ]; then
+		python $CONFIG_SCRIPT "role_clean"
+	fi
+}

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# You need to edit follow information of user
+
+#user config
+unset USER_NAME
+unset USER_PASSWORD
+unset USER_EMAIL
+unset USER_TENANT_ID
+
+
+export USER_NAME=user_test
+export USER_PASSWORD=user_test_password
+export USER_EMAIL=cloudmaster@example.com
+export USER_TENANT_ID=None

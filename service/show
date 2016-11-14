@@ -1,0 +1,19 @@
+#!/bin/bash
+SERVICE_LIST="SHOW_INFO"
+
+# need to update using python api
+#shell api
+func_show_role()
+{
+
+	keystone role-list
+}
+
+func_show_user()
+{
+	keystone user-list
+}
+func_show_tenant()
+{
+	keystone tenant-list
+}

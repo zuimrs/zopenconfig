@@ -1,0 +1,47 @@
+#!/bin/bash
+SERVICE_LIST="USER_MANAGEMENT"
+CONFIG_SCRIPT=config.py
+TEMP_PATH="template"
+TEMP_FILE_NAME="user.temp"
+TEMP_ENV_FILE="temp-env.sh"
+call_get_config()
+{
+	cp "$TEMP_PATH/$TEMP_FILE_NAME" TEMP_ENV_FILE
+ 	vim TEMP_ENV_FILE
+ 	source TEMP_ENV_FILE
+
+}
+
+ func_user_add()
+ {
+ 	call_get_config
+ 	python $CONFIG_SCRIPT "user_add"
+ 	rm TEMP_ENV_FILE
+
+ 	#shell api
+ 	#keystone user-add --name $userNAME
+ 	keystone user-list
+}
+func_user_delete()
+{
+	local USER_NAME=$3
+	if [ $# -le 2 ];then
+		echo "You need use this command with an argument of the name of user"
+		exit 1
+	fi
+	#python $CONFIG_SCRIPT "user_delete"  $user_NAME
+
+	#shell api
+	keystone user-delete $USER_NAME
+	keystone user-list
+}
+func_user_clean()
+{
+	export CLEAN_CONFRIM
+ 	if  [ -z $CLEAN_CONFRIM ]; then
+		read -p "Do you really want to clean all users? [Y/n]" CLEAN_CONFRIM
+	fi
+	if [ 'y' = $CLEAN_CONFRIM -o 'Y' = $CLEAN_CONFRIM ]; then
+		python $CONFIG_SCRIPT "user_clean"
+	fi
+}

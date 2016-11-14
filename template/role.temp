@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# You need to edit follow information of role
+
+#role config
+unset ROLE_NAME
+export ROLE_NAME=role_test
