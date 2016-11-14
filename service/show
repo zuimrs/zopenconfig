@@ -68,5 +68,6 @@ func_show_all()
 	do
 		func_show_$item;
 	done
+	echo "nova-list"
 	nova list
 }
