@@ -18,6 +18,10 @@ python-neutronclient \
 python-quantumclient \
 python-novaclient \
 python-glanceclient"
+ITEM_LIST="\
+role user tenant image \
+usage service volume network \
+hypervisor host floating-ip"
 
 # args: FILE_NAME
 load_file()
@@ -131,7 +135,7 @@ invoke_service()
 	if [ -z "$ACTION" ]&&[[ "$SERVICE_NAME" = "show" ]]; then
 		echo "'$SERVICE_NAME' SUPPORT ACTIONS:"
 		echo -n "  "
-		echo_usable_action "user role tenant"
+		echo_usable_action $ITEM_LIST
 		echo " "
 		return
 	elif [ -z "$ACTION" ]; then

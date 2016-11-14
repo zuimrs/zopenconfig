@@ -1,19 +1,72 @@
 #!/bin/bash
 SERVICE_LIST="SHOW_INFO"
-
+ITEM_LIST="\
+role user tenant image \
+usage service volume network \
+hypervisor host floating-ip"
 # need to update using python api
 #shell api
 func_show_role()
 {
-
+	echo "role-list"
 	keystone role-list
 }
 
 func_show_user()
 {
+	echo "user-list"
 	keystone user-list
 }
 func_show_tenant()
 {
+	echo "tenant-list"
 	keystone tenant-list
+}
+func_show_image()
+{
+	echo "image-list"
+	nova image-list
+}
+func_show_usage()
+{
+	echo "usage-list"
+	nova usage-list
+}
+func_show_service()
+{
+	echo "service-list"
+	nova service-list
+}
+func_show_volume()
+{
+	echo "volume-list"
+	nova volume-list
+}
+func_show_network()
+{
+	echo "network-list"
+	nova network-list
+}
+func_show_hypervisor()
+{
+	echo "hypervisor-list"
+	nova hypervisor-list
+}
+func_show_host()
+{
+	echo "host-list"
+	nova host-list
+}
+func_show_floating-ip()
+{
+	echo "floating-ip-list"
+	nova floating-ip-list
+}
+func_show_all()
+{
+	for item in $ITEM_LIST;
+	do
+		func_show_$item;
+	done
+	nova list
 }
