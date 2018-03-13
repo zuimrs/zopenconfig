@@ -29,7 +29,7 @@ support ubuntu 14.04</br>
 
 	./zopenconfig.sh show
 
-### anage user
+### Manage user
 
 	./zopenconfig.sh user 
 
