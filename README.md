@@ -1,4 +1,5 @@
-#zopenconfig
+# zopenconfig
+
 [https://github.com/zuimrs/zopenconfig](https://github.com/zuimrs/zopenconfig)
 
 An easy method that helps you to manage Openstack</br>
@@ -10,32 +11,33 @@ You need run package_test to test whether you install all basic package</br>
 support ubuntu 14.04</br>
 
 
-##Usage:
+## Usage:
 	./zopenconfig.sh  [-h] <Service_Name> [Action] [-v]
->###optional arguments:
+>### optional arguments:
   -h,--help                    show this help message and exit</br>
   -v,--version                 show the version of these bash scripts</br>
 
 
-##For example:
+## For example:
 	./zopenconfig.sh package_test
 	./zopenconfig.sh show
 	./zopenconfig.sh user
 	./zopenconfig.sh role
 	./zopenconfig.sh tenant
 
-###Show openstack cluster information
+### Show openstack cluster information
 
 	./zopenconfig.sh show
 
-###Manage user
+### anage user
 
 	./zopenconfig.sh user 
 
-###Manage role
+### Manage role
 
 	./zopenconfig.sh role
 
-###Manage tenant
+### Manage tenant
 
 	./zopenconfig.sh tenant
+ 
